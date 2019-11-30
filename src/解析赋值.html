@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解析赋值</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let obj = {
+        username: 'javascript',
+        password: '123456'
+    };
+
+    let {
+        username,
+        password
+    } = obj;
+    console.log(username, password);
+
+    function func({
+        username,
+        pwd
+    }) {
+        console.log(username, pwd);
+    }
+
+    func(obj);
+
+    let arr = [1, 2, 3, 'ccc', false, '噜啦啦'];
+    let [,,,a, b] = arr;
+    console.log(a, b);
+</script>
+
+</html>

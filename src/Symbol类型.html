@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Symbol类型</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let sb = Symbol();
+    let sb1 = Symbol();
+
+    console.log(sb);
+    console.log(sb1);
+    console.log(sb == sb1)
+
+    // 定义一个对象
+    let obj = {
+        name: 'jark'
+    };
+    // obj.address = 'hell';
+
+    let sb2 = Symbol('address');
+    obj[sb2] = 'heaven';
+    console.log(obj);
+
+    // 定义常量的时候也使用
+    const System_key = Symbol('abc');
+
+    let sb3 = Symbol.for('abc');
+    let sb4 = Symbol.for('abc');
+    console.log(sb3);
+    console.log(sb4);
+    console.log(sb3 == sb4);
+
+    let fooKey = Symbol.keyFor(sb4);
+    console.log(fooKey);
+</script>
+
+</html>

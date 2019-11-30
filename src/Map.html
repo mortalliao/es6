@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let map = new Map();
+    map.set('name', '张三');
+    map.set('age', 18);
+    map.set('婚否', false);
+    console.log(map.get('name'));
+    console.log(map.get('age'));
+    console.log(map.get('婚否'));
+
+    // key是对象
+    let obj = {};
+    map.set(obj, '对象');
+    console.log(map.get(obj));
+
+    // key是函数
+    let func = function () {
+
+    }
+    map.set(func, '函数');
+    console.log(map.get(func));
+
+    // key是NaN
+    map.set(NaN, 'NaN');
+    console.log(map.get(NaN));
+    console.log(map.get(Number('aaa')));
+
+    // Map迭代
+    // for ... of
+    for (let [key, value] of map) {
+        console.log(key, value);
+    }
+
+    // forEach
+    map.forEach(function (value, key) {
+        console.log(value, key);
+    })
+
+    // keys
+    console.log('所有key');
+    for (let key of map.keys()) {
+        console.log(key);
+    }
+
+    // values
+    console.log('所有值');
+    for (let value of map.values()) {
+        console.log(value);
+    }
+
+    // Map对象操作
+    // Map与Array转换
+    // 数组转Map
+    let arr = [
+        ['key1', 'v1'],
+        ['key2', 'v2']
+    ];
+    let map2 = new Map(arr);
+    console.log(map2);
+
+    // Map转数组
+    let arr2 = Array.from(map2);
+    console.log(arr2);
+
+    // Map合并
+    let map3 = new Map([...map, ...map2]);
+    console.log(map3);
+</script>
+
+</html>

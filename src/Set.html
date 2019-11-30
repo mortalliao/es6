@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Set</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // Set对象
+    // Set里的value值是唯一的
+    let map = new Map();
+    map.set('no001', '张三');
+    map.set('no002', '李四');
+    map.set('no003', '王五');
+    console.log(map);
+
+    let set = new Set();
+    set.set('张三');
+    set.set('李四');
+    set.set('张三');
+    console.log(set);
+
+    // Set遍历
+    // for...of
+    for (let value of set.values()) {
+        console.log(value);
+    }
+
+    // Set数组转换
+    let arr = [
+        ['k1', 'v1'],
+        ['k2', 'v2']
+    ];
+    let set1 = new Set(arr);
+    console.log(set1);
+
+    let arr1 = [...set3];
+    console.log(arr1);
+
+    // 数组去重复
+    let arr2 = [1, 2, 3, 4, 3];
+    let set2 = new Set(arr2);
+    let arr3 = [...set2];
+    console.log(arr3);
+
+    // 求并集
+    let a = new Set([1, 2, 3]);
+    let b = new Set([4, 5, 6]);
+    let union = new Set([...a, ...b]);
+    console.log(union);
+
+    // 求交集
+    let a1 = new Set([1, 2, 3]);
+    let b1 = new Set([4, 3, 2]);
+    let interset = new Set([...a1].filter(r => b1.has(r)));
+    console.log(interset);
+
+    // 求差集
+    let a2 = new Set([1, 2, 3]);
+    let b2 = new Set([4, 3, 2]);
+    let difference = new Set([...a2].filter(r => !b2.has(r)));
+    console.log(difference);
+</script>
+
+</html>

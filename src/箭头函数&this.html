@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数&this</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let test = (a, b) => a + b;
+    console.log(test(1, 2));
+
+    // 一个参数, 括号可以省略
+    let func = a => console.log("func");
+
+
+    // 箭头函数默认没有this, 
+    // 所有this是定义的时候, 外部所在的对象是函数的this, 不是调用时的this
+    let obj = {
+        name: 'javascript',
+        pwd: '123456',
+        getName: () => {
+            console.log(this);
+            console.log(this.name);
+        }
+    }
+
+    obj.getName();
+
+</script>
+
+</html>
