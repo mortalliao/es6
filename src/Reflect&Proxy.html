@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reflect&Proxy</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let target = {
+        name: "小明",
+        age: 18
+    };
+
+    let handler = {
+        // get(target, name) {
+        //     console.log('getting:' + name);
+        //     return target[name];
+        // }
+        get(target, propKey, receive) {
+            if (propKey in target) {
+                console.log('success');
+            } else {
+                console.log('error');
+            }
+            // return Object.defineProperty(target, propKey, receive);
+            return Reflect.get(target, propKey, receive);
+        },
+        set(target, propKey, value, receive) {
+            if (propKey == 'age') {
+                if (!Number.isInteger(value)) {
+                    throw new TypeError('The age is not an integer');
+                } else {
+                    console.log('set success');
+                }
+            } else {
+                console.log('set success');
+            }
+            return Reflect.set(target, propKey, value, receive);
+        },
+        has(target, propKey){
+            console.log('handle has');
+            return propKey in target;
+        }
+    }
+
+    let pro = new Proxy(target, handler);
+
+    console.log(pro.name);
+    console.log(pro.age);
+
+    let obj = Object.create(pro);
+    console.log(obj.name);
+
+    pro.name = 'jeck';
+    // pro.age = '34';
+    pro.age = 34;
+
+    console.log('name' in pro);
+    console.log('age' in pro);
+</script>
+
+</html>
