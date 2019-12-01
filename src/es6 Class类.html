@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6 Class类</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        getInfo() {
+            return `姓名:${this.name}, 年龄:${this.age}`;
+        }
+    }
+
+    let person = new Person('Jeck', 18);
+    console.log(person.name);
+    console.log(person.getInfo());
+
+    class Man extends Person {
+        constructor(name, age, height) {
+            super(name, age);
+            this.height = height;
+        }
+    }
+
+    let man = new Man('Jim', 30, 170);
+    console.log(man.height);
+</script>
+
+</html>

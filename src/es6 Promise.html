@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="../jquery-1.11.2.min.js"></script>
+    <title>es6 Promise</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // let promise = new Promise((resolve, reject) => {
+    //     console.log('promise 初始化状态: pending'); // 同步执行
+    //     setTimeout(() => {
+    //         console.log('开启定时器, 模拟异步执行');
+    //         // resolve('异步返回, 执行成功'); // 状态改成 fulfilled
+    //         reject('异步返回, 执行失败'); // 状态改成 rejected
+    //     }, 1000);
+    // });
+
+    // promise.then((data) => { // 第一个回调 成功resolve
+    //     console.log(data);
+    // }, (data) => { // 第二个回调 失败reject
+    //     console.log(data);
+    // });
+
+    // console.log('代码继续执行');
+
+
+    // 执行成功调用resolve  执行失败调用reject
+    let promise = new Promise((resolve, reject) => {
+        console.log('promise初始化状态：pending') // 同步执行
+        $.get('./data.json', {}, function (result) {
+            console.log('ajax异步操作');
+            if (result.ret) {
+                console.log('执行成功')
+                resolve(result.data);
+            } else {
+                console.log('执行失败')
+                reject(result.data);
+            }
+        }, 'json');
+    })
+    console.log('代码继续执行')
+
+    promise
+        .then((data) => { // 第一个回调 成功resolve
+            console.log(data)
+        }, (data) => { // 第二个回调 失败reject
+            console.log(data)
+        })
+</script>
+
+</html>
